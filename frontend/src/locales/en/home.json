@@ -1,0 +1,36 @@
+{
+  "hero": {
+    "title": "Discipline of the Soul, Experience of the Divine",
+    "description": "Every line of wisdom dispels darkness and unites the soul with its true nature.",
+    "ctaStart": "Start Reading",
+    "ctaBrowse": "Browse Catalog",
+    "imageAlt": "Books stacked together"
+  },
+  "explore": {
+    "title": "Explore Our Sections",
+    "sections": {
+      "Fiction": "Fiction",
+      "Non-Fiction": "Non-Fiction",
+      "Biographies": "Biographies",
+      "Children": "Children",
+      "History": "History",
+      "Science": "Science",
+      "Technology": "Technology",
+      "Mystery": "Mystery"
+    }
+  },
+  "testimonials": {
+    "title": "What Readers Say",
+    "quotes": {
+      "0": "BookNest rekindled my love for reading!",
+      "1": "A vibrant community and a massive catalog!",
+      "2": "I found rare titles I couldn’t get anywhere else."
+    }
+  },
+  "newsletter": {
+    "title": "Stay Updated",
+    "subtitle": "Subscribe to our newsletter for book releases and events.",
+    "placeholder": "Enter your email",
+    "cta": "Subscribe"
+  }
+}
