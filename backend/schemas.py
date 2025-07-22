@@ -8,14 +8,14 @@ class RoleEnum(str, Enum):
 class UserCreate(BaseModel):
     name: str
     email: EmailStr
-    phone: str
+    number: str
     password: str
 
 class UserOut(BaseModel):
     id: int
     name: str
     email: EmailStr
-    phone: str
+    number: str
     role: RoleEnum
 
     class Config:

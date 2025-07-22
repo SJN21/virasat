@@ -7,7 +7,7 @@ def create_user(session: Session, user_data: UserCreate):
     user = User(
         name=user_data.name,
         email=user_data.email,
-        phone=user_data.phone,
+        number=user_data.number,
         hashed_password=hash_password(user_data.password),
         role=user_data.role
     )

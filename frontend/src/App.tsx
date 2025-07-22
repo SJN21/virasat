@@ -8,21 +8,20 @@ import Gallery from "./pages/Gallery";
 import MainLayout from "./MainLayout";
 import Feedback from "./pages/Feedback";
 import ArticlePage from "./pages/ArticlePage";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import AuthPage from "./pages/AuthPage";
 import { Toaster } from "react-hot-toast";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(null); // ❗ Start as null
-  const [loading, setLoading] = useState(true); // 🔄 Handle initial loading
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsAuthenticated(!!token);
-    setLoading(false); // ✅ Done checking
+    setLoading(false);
   }, []);
 
-  if (loading) return null; // Or return a nice loader here
+  if (loading) return null; // Optional: Show a spinner here
 
   return (
     <Router>
@@ -31,27 +30,24 @@ function App() {
         {/* Public Routes */}
         {!isAuthenticated && (
           <>
-            <Route path="/login" element={<Login setAuth={setIsAuthenticated} />} />
-            <Route path="/register" element={<Register />} />
+           <Route path="/login" element={<AuthPage type="login" setAuth={setIsAuthenticated} />} />
+            <Route path="/register" element={<AuthPage type="register" setAuth={setIsAuthenticated} />} />
+            <Route path="*" element={<Navigate to="/register" replace />} />
           </>
         )}
 
         {/* Protected Routes */}
-        {isAuthenticated ? (
+        {isAuthenticated && (
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path="books" element={<Books />} />
             <Route path="book/:id" element={<BookDetail />} />
             <Route path="events" element={<Events />} />
-            <Route path="gallery" element={<Gallery />} />
+            <Route path="admin/gallery" element={<Gallery />} />
             <Route path="feedback" element={<Feedback />} />
             <Route path="articles" element={<ArticlePage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
-        ) : (
-          <>
-            <Route path="/" element={<Navigate to="/register" replace />} />
-            <Route path="*" element={<Navigate to="/register" replace />} />
-          </>
         )}
       </Routes>
     </Router>
