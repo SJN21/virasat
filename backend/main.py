@@ -39,7 +39,7 @@ def register(user: schemas.UserCreate, db: Session = Depends(database.get_db)):
     access_token = auth.create_access_token(
         data={"sub": new_user.email}, expires_delta=timedelta(days=2)
     )
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"access_token": access_token, "token_type": "bearer", "name": new_user.name}
 
 class LoginRequest(BaseModel):
     email: str
@@ -54,7 +54,7 @@ def login(request: LoginRequest, db: Session = Depends(database.get_db)):
     access_token = auth.create_access_token(
         data={"sub": user.email}, expires_delta=timedelta(days=2)
     )
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"access_token": access_token, "token_type": "bearer", "name": user.name}
 
 @app.get("/admin/dashboard")
 def admin_dashboard(current_user=Depends(auth.get_admin_user)):

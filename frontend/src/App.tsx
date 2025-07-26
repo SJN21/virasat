@@ -43,7 +43,7 @@ function App() {
             <Route path="books" element={<Books />} />
             <Route path="book/:id" element={<BookDetail />} />
             <Route path="events" element={<Events />} />
-            <Route path="admin/gallery" element={<Gallery />} />
+            <Route path="gallery" element={<Gallery />} />
             <Route path="feedback" element={<Feedback />} />
             <Route path="articles" element={<ArticlePage />} />
             <Route path="*" element={<Navigate to="/" replace />} />

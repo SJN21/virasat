@@ -36,15 +36,15 @@ export default function AuthPage({ setAuth }) {
       });
 
       const data = await res.json();
-      debugger
       if (!res.ok) {
         toast.error(data.detail || "Something went wrong");
         return;
       }
 
-      debugger
       if (!isRegistering) {
         localStorage.setItem("token", data.access_token);
+        debugger
+        localStorage.setItem("name", data.name); 
         setAuth(true);
         navigate("/");
       } else {
